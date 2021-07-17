@@ -1,5 +1,9 @@
 
 # This is my mac-setup project
 
-This is simply a placeholder readme file
+To run this project run this from the command line.
+
+```bash
+sh -c "$(curl -fsSL bit.ly/jhessin-mac-setup)"
+```
 
