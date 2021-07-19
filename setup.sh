@@ -83,7 +83,6 @@ PATH=$PATH:$HOME/.local/bin
 # copy dotfiles from github along with .config hopefully
 pushd $HOME
 gmerge dotfiles
-git submodule update --init --recursive
 popd
 
 pushd $HOME/.config
