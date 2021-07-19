@@ -52,11 +52,10 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
 # install pip
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python3 get-pip.py
+python3 -m ensurepip --default-pip
 
 # install pip packages
-pip3 install $(cat ./pip.packages) --user
+python3 -m pip install $(cat ./pip.packages) --user
 
 # update npm and add packages
 npm i -g $(cat ./npm.packages)
