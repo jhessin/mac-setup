@@ -86,6 +86,10 @@ gmerge dotfiles
 git submodule update --init --recursive
 popd
 
+pushd $HOME/.config
+gmerge .config
+popd
+
 # setup zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # setup zinit
