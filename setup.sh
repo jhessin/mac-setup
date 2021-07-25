@@ -27,18 +27,18 @@ sudo rm -f /System/Library/Caches/com.apple.IntlDataCache.le*
 
 # Use it as the only layout
 for file in ~/Library/Preferences/com.apple.HIToolbox.plist; do
-    for key in AppleCurrentKeyboardLayoutInputSourceID; do
-        /usr/libexec/PlistBuddy -c "delete :${key}" ${file}
-        /usr/libexec/PlistBuddy -c "add :${key} string 'com.apple.keyboardlayout.Programmer Dvorak'" ${file}
-    done
-    for key in AppleDefaultAsciiInputSource AppleCurrentAsciiInputSource AppleCurrentInputSource AppleEnabledInputSources AppleInputSourceHistory AppleSelectedInputSources; do
-        /usr/libexec/PlistBuddy -c "delete :${key}" ${file}
-        /usr/libexec/PlistBuddy -c "add :${key} array" ${file}
-        /usr/libexec/PlistBuddy -c "add :${key}:0 dict" ${file}
-        /usr/libexec/PlistBuddy -c "add :${key}:0:InputSourceKind string 'Keyboard Layout'" ${file}
-        /usr/libexec/PlistBuddy -c "add ':${key}:0:KeyboardLayout ID' integer 6454" ${file}
-        /usr/libexec/PlistBuddy -c "add ':${key}:0:KeyboardLayout Name' string 'Programmer Dvorak'" ${file}
-    done
+	for key in AppleCurrentKeyboardLayoutInputSourceID; do
+		/usr/libexec/PlistBuddy -c "delete :${key}" ${file}
+		/usr/libexec/PlistBuddy -c "add :${key} string 'com.apple.keyboardlayout.Programmer Dvorak'" ${file}
+	done
+	for key in AppleDefaultAsciiInputSource AppleCurrentAsciiInputSource AppleCurrentInputSource AppleEnabledInputSources AppleInputSourceHistory AppleSelectedInputSources; do
+		/usr/libexec/PlistBuddy -c "delete :${key}" ${file}
+		/usr/libexec/PlistBuddy -c "add :${key} array" ${file}
+		/usr/libexec/PlistBuddy -c "add :${key}:0 dict" ${file}
+		/usr/libexec/PlistBuddy -c "add :${key}:0:InputSourceKind string 'Keyboard Layout'" ${file}
+		/usr/libexec/PlistBuddy -c "add ':${key}:0:KeyboardLayout ID' integer 6454" ${file}
+		/usr/libexec/PlistBuddy -c "add ':${key}:0:KeyboardLayout Name' string 'Programmer Dvorak'" ${file}
+	done
 done
 
 # install Homebrew
@@ -56,6 +56,11 @@ python3 -m ensurepip --default-pip
 
 # install pip packages
 python3 -m pip install $(cat ./pip.packages) --user
+
+# install nvm and node
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+nvm install --lts
+nvm use --lts
 
 # update npm and add packages
 npm i -g $(cat ./npm.packages)
