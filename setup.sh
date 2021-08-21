@@ -41,6 +41,9 @@ for file in ~/Library/Preferences/com.apple.HIToolbox.plist; do
 	done
 done
 
+# install command line tools
+xcode-select --install
+
 # install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
