@@ -9,6 +9,10 @@ function confirm {
 	fi
 }
 
+
+# install command line tools
+xcode-select --install
+
 # clone the repo
 if [ -d "$HOME/setup/mac-setup" ]; then
 	echo Repo downloaded updating...
@@ -41,13 +45,11 @@ for file in ~/Library/Preferences/com.apple.HIToolbox.plist; do
 	done
 done
 
-# install command line tools
-xcode-select --install
-
 # install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # install Homebrew packages
+brew tap homebrew/cask-fonts
 brew install $(cat ./brew.packages)
 
 # install ruby and gems
@@ -71,6 +73,7 @@ nvm install --lts
 nvm use --lts
 
 # update npm and add packages
+npm i -g npm
 npm i -g $(cat ./npm.packages)
 
 # install rustup and cargo
@@ -108,9 +111,4 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/i
 
 # setup neovim
 $HOME/.config/nvim/install.sh
-
-# configure zsh as default shell
-if confirm "Would you like to set zsh as your default shell?"; then
-	chsh -s /usr/bin/zsh
-fi
 
