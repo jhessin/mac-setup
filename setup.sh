@@ -57,8 +57,10 @@ if [ ! -d "/usr/local/Homebrew" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+# install source Code Pro fonts
+cp ./SourceCodePro/*.* $HOME/Library/Fonts/
+
 # install Homebrew packages
-brew tap homebrew/cask-fonts
 brew install $(cat ./brew.packages)
 
 # Fix the gnupg permissions
