@@ -85,8 +85,10 @@ npm i -g npm
 npm i -g $(cat ./npm.packages)
 
 # install rustup and cargo
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-export PATH=$HOME/.cargo/bin:$PATH
+if [ ! -f  "$HOME/.cargo/bin/cargo"]; then
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  export PATH=$HOME/.cargo/bin:$PATH
+fi
 cargo install $(cat ./cargo.packages)
 
 # setup gh login
