@@ -48,6 +48,9 @@ for file in ~/Library/Preferences/com.apple.HIToolbox.plist; do
 	done
 done
 
+# copy layout to root
+sudo cp ~/Library/Preferences/com.apple.HIToolbox.plist /Library/Preferences/
+
 # install Homebrew
 if [ ! -d "/usr/local/Homebrew" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
