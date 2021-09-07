@@ -25,9 +25,12 @@ else
 	cd $HOME/setup/mac-setup
 fi
 
-# install programmer dvorak
-sudo installer -pkg "./Programmer Dvorak v1.2.pkg" -target /
-sudo rm -f /System/Library/Caches/com.apple.IntlDataCache.le*
+# install programmer dvorak if necessary...
+layout="`defaults read ~/Library/Preferences/com.apple.HIToolbox.plist AppleSelectedInputSources | egrep -w 'KeyboardLayout Name' |sed -E 's/^.+ = \"?([^\"]+)\"?;$/\1/'`"
+if [ "$layout" != "Programmer Dvorak" ]; then
+  sudo installer -pkg "./Programmer Dvorak v1.2.pkg" -target /
+  sudo rm -f /System/Library/Caches/com.apple.IntlDataCache.le*
+fi
 
 # Use it as the only layout
 for file in ~/Library/Preferences/com.apple.HIToolbox.plist; do
@@ -46,14 +49,16 @@ for file in ~/Library/Preferences/com.apple.HIToolbox.plist; do
 done
 
 # install Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if [ ! -d "/usr/local/Homebrew" ]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
 # install Homebrew packages
 brew tap homebrew/cask-fonts
 brew install $(cat ./brew.packages)
 
 # install ruby and gems
-gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+gpg --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 curl -sSL https://get.rvm.io | bash -s stable
 sudo gem install $(cat ./gem.packages)
 
