@@ -9,6 +9,7 @@ function confirm {
 	fi
 }
 
+set -x
 
 # install command line tools
 xcode-select --install
@@ -61,6 +62,9 @@ brew tap homebrew/cask-fonts
 brew install $(cat ./brew.packages)
 
 # install ruby and gems
+sudo chown -R $(whoami) $HOME/.gnupg/
+find ~/.gnupg -type f -exec chmod 600 {} \;
+find ~/.gnupg -type d -exec chmod 700 {} \;
 gpg --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 curl -sSL https://get.rvm.io | bash -s stable
 sudo gem install $(cat ./gem.packages)
