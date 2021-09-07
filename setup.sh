@@ -105,6 +105,11 @@ fi
 # add the bin to you path for tools
 PATH=$PATH:$HOME/.local/bin
 
+# setup zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# setup zinit
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+
 # copy dotfiles from github along with .config hopefully
 pushd $HOME
 gmerge dotfiles
@@ -113,11 +118,6 @@ popd
 pushd $HOME/.config
 gmerge .config
 popd
-
-# setup zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# setup zinit
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 
 # setup neovim
 $HOME/.config/nvim/install.sh
