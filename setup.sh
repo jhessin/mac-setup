@@ -61,6 +61,9 @@ fi
 cp ./fonts/SourceCodePro/*.* $HOME/Library/Fonts/
 cp ./fonts/Fira_Code_v5.2/ttf/*.* $HOME/Library/Fonts/
 
+# install iTerm
+cp -r ./apps/*.* /Applications
+
 # install Homebrew packages
 brew install $(cat ./brew.packages)
 
