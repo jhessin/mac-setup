@@ -57,8 +57,9 @@ if [ ! -d "/usr/local/Homebrew" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# install source Code Pro fonts
-cp ./SourceCodePro/*.* $HOME/Library/Fonts/
+# install source Code Pro and Fira_code fonts
+cp ./fonts/SourceCodePro/*.* $HOME/Library/Fonts/
+cp ./fonts/Fira_Code_v5.2/ttf/*.* $HOME/Library/Fonts/
 
 # install Homebrew packages
 brew install $(cat ./brew.packages)
