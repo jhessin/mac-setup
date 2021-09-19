@@ -52,6 +52,9 @@ done
 # copy layout to root
 sudo cp ~/Library/Preferences/com.apple.HIToolbox.plist /Library/Preferences/
 
+# Add the kitty terminal
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+
 # install Homebrew
 if [ ! -d "/usr/local/Homebrew" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
