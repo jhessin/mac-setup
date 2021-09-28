@@ -138,6 +138,9 @@ pushd $HOME/.config
 gmerge .config
 popd
 
+# Clone the flutter repo for flutter development
+git clone https://github.com/flutter/flutter.git $HOME/flutter
+
 # setup neovim
 $HOME/.config/nvim/install.sh
 
