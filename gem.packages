@@ -1,2 +1,2 @@
-cocoapods
+cocoapods -v 1.8.4
 neovim
