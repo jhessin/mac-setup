@@ -9,7 +9,7 @@ function confirm {
 	fi
 }
 
-set -x
+#set -x
 
 # install command line tools
 xcode-select --install
